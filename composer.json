@@ -1,0 +1,15 @@
+{
+    "name": "elfcms/basic",
+    "description": "",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Maxim Klassen",
+            "email": "maximklassen@mail.de"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    }
+}
