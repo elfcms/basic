@@ -12,6 +12,11 @@
     "require": {
         "php": "^8.0"
     },
+    "autoload": {
+        "psr-4": {
+            "Elfcms\\Basic\\": "src"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
