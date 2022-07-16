@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Resources;
+namespace Elfcms\Basic\Http\Controllers\Resources;
 
 use App\Http\Controllers\Controller;
-use App\Models\Menu;
-use App\Models\MenuItem;
+use Elfcms\Basic\Models\Menu;
+use Elfcms\Basic\Models\MenuItem;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller

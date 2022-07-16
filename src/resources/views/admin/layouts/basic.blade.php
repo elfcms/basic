@@ -63,7 +63,7 @@
                     </li>
                 </ul>
             </li>
-            {{-- <li @if(Str::startsWith(Route::currentRouteName(),'admin.form')) class="active" @endif>
+            <li @if(Str::startsWith(Route::currentRouteName(),'admin.form')) class="active" @endif>
                 <a href="{{ route('admin.form') }}">
                     <img src="/vendor/elfcms/basic/admin/images/icons/forms.png" alt="">
                     <span>{{ __('basic::elf.form') }}</span>
@@ -80,7 +80,7 @@
                     </li>
                 </ul>
             </li>
-            <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog')) class="active" @endif>
+            {{-- <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog')) class="active" @endif>
                 <a href="{{ route('admin.blog') }}">
                     <img src="/vendor/elfcms/basic/admin/images/icons/blog.png" alt="">
                     <span>Blog</span>
@@ -105,7 +105,7 @@
                         <a href="{{ route('admin.blog.likes') }}">Likes</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <li @if(Str::startsWith(Route::currentRouteName(),'admin.menu')) class="active" @endif>
                 <a href="{{ route('admin.menu.menus') }}">
                     <img src="/vendor/elfcms/basic/admin/images/icons/menu.png" alt="">
@@ -127,7 +127,7 @@
                     <img src="/vendor/elfcms/basic/admin/images/icons/pages.png" alt="">
                     <span>Pages</span>
                 </a>
-            </li> --}}
+            </li>
             <li class="only-mobile">
                 <a href="/admin/logout">
                     <img src="/vendor/elfcms/basic/admin/images/icons/logout.png" alt="">

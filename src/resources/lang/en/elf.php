@@ -18,6 +18,8 @@ return [
     'edit' => 'Edit',
     'save' => 'Save',
     'send' => 'Send',
+    'pages' => 'Pages',
+    'create_page' => 'Create page',
     'deleting_of_element' => 'Deleting of element #',
     'are_you_sure_to_deleting_user' => 'Are you sure to deleting user ',
     'user' => 'User',

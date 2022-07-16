@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Resources;
+namespace Elfcms\Basic\Http\Controllers\Resources;
 
 use App\Http\Controllers\Controller;
-use App\Models\Page;
+use Elfcms\Basic\Models\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -57,8 +57,8 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|unique:App\Models\Page,name',
-            'slug' => 'required|unique:App\Models\Page,slug',
+            'name' => 'required|unique:Elfcms\Basic\Models\Page,name',
+            'slug' => 'required|unique:Elfcms\Basic\Models\Page,slug',
             'content' => 'required',
         ]);
 

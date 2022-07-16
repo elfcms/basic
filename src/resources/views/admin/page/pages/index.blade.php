@@ -85,7 +85,7 @@
             </tbody>
         </table>
     </div>
-    {{$pages->links('admin.layouts.pagination')}}
+    {{$pages->links('basic::admin.layouts.pagination')}}
 
     <script>
         const checkForms = document.querySelectorAll('form[data-submit="check"]')

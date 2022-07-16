@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Resources;
+namespace Elfcms\Basic\Http\Controllers\Resources;
 
 use App\Http\Controllers\Controller;
-use App\Models\FormFieldOption;
+use Elfcms\Basic\Models\FormFieldOption;
 use Illuminate\Http\Request;
 
 class FormFieldOptionController extends Controller

@@ -95,6 +95,29 @@ Route::name('admin.')->middleware('admin')->group(function(){
     Route::get('/admin/email',[Elfcms\Basic\Http\Controllers\AdminController::class,'email'])
     ->name('email');
 
+    Route::name('form.')->group(function(){
+        Route::resource('/admin/form/forms', Elfcms\Basic\Http\Controllers\Resources\FormController::class)->names(['index' => 'forms']);
+        Route::resource('/admin/form/groups', Elfcms\Basic\Http\Controllers\Resources\FormFieldGroupController::class)->names(['index' => 'groups']);
+        Route::resource('/admin/form/fields', Elfcms\Basic\Http\Controllers\Resources\FormFieldController::class)->names(['index' => 'fields']);
+        Route::resource('/admin/form/options', Elfcms\Basic\Http\Controllers\Resources\FormFieldOptionController::class)->names(['index' => 'options']);
+        Route::resource('/admin/form/field-types', Elfcms\Basic\Http\Controllers\Resources\FormController::class)->names(['index' => 'field-types']);
+        Route::resource('/admin/form/results', Elfcms\Basic\Http\Controllers\Resources\FormResultController::class)->names(['index' => 'results']);
+    });
+
+    Route::get('/admin/form',[\Elfcms\Basic\Http\Controllers\AdminController::class,'form'])
+    ->name('form');
+
+    Route::name('menu.')->group(function(){
+        Route::resource('/admin/menu/menus', Elfcms\Basic\Http\Controllers\Resources\MenuController::class)->names(['index' => 'menus']);
+        Route::resource('/admin/menu/items', Elfcms\Basic\Http\Controllers\Resources\MenuItemController::class)->names(['index' => 'items']);
+    });
+
+    Route::name('page.')->group(function(){
+        Route::resource('/admin/page/pages', Elfcms\Basic\Http\Controllers\Resources\PageController::class)->names(['index' => 'pages']);
+    });
+
+
+
     /* Route::get('/admin/blog',[\App\Http\Controllers\AdminController::class,'blog'])
     ->name('blog');
 
@@ -108,24 +131,7 @@ Route::name('admin.')->middleware('admin')->group(function(){
         Route::resource('/admin/blog/likes', App\Http\Controllers\Resources\BlogLikeController::class)->names(['index' => 'likes']);
     });
 
-    Route::name('form.')->group(function(){
-        Route::resource('/admin/form/forms', App\Http\Controllers\Resources\FormController::class)->names(['index' => 'forms']);
-        Route::resource('/admin/form/groups', App\Http\Controllers\Resources\FormFieldGroupController::class)->names(['index' => 'groups']);
-        Route::resource('/admin/form/fields', App\Http\Controllers\Resources\FormFieldController::class)->names(['index' => 'fields']);
-        Route::resource('/admin/form/options', App\Http\Controllers\Resources\FormFieldOptionController::class)->names(['index' => 'options']);
-        Route::resource('/admin/form/field-types', App\Http\Controllers\Resources\FormController::class)->names(['index' => 'field-types']);
-        Route::resource('/admin/form/results', App\Http\Controllers\Resources\FormResultController::class)->names(['index' => 'results']);
-    });
 
-
-    Route::name('menu.')->group(function(){
-        Route::resource('/admin/menu/menus', App\Http\Controllers\Resources\MenuController::class)->names(['index' => 'menus']);
-        Route::resource('/admin/menu/items', App\Http\Controllers\Resources\MenuItemController::class)->names(['index' => 'items']);
-    });
-
-    Route::name('page.')->group(function(){
-        Route::resource('/admin/page/pages', App\Http\Controllers\Resources\PageController::class)->names(['index' => 'pages']);
-    });
 
 
 

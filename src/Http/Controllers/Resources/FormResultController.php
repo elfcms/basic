@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Resources;
+namespace Elfcms\Basic\Http\Controllers\Resources;
 
 use App\Http\Controllers\Controller;
-use App\Models\FormResult;
+use Elfcms\Basic\Models\FormResult;
 use Illuminate\Http\Request;
 
 class FormResultController extends Controller

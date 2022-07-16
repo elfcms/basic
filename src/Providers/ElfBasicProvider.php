@@ -61,6 +61,11 @@ class ElfBasicProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/elfcms/basic'),
         ]);
+
+        $this->publishes([
+            __DIR__.'/../resources/lang' => resource_path('lang/vendor/basic'),
+        ]);
+
         $this->publishes([
             __DIR__.'/../public' => public_path('vendor/elfcms/basic'),
         ], 'public');

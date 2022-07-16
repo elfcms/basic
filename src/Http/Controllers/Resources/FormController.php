@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Resources;
+namespace Elfcms\Basic\Http\Controllers\Resources;
 
 use App\Http\Controllers\Controller;
-use App\Models\Form;
-use App\Models\FormField;
-use App\Models\FormFieldGroup;
+use Elfcms\Basic\Models\Form;
+use Elfcms\Basic\Models\FormField;
+use Elfcms\Basic\Models\FormFieldGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
