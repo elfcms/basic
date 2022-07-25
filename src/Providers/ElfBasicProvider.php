@@ -23,6 +23,7 @@ class ElfBasicProvider extends ServiceProvider
         require_once __DIR__ . '/../Elf/UrlParams.php';
         require_once __DIR__ . '/../Elf/FormSaver.php';
         require_once __DIR__ . '/../Elf/Helpers.php';
+        require_once __DIR__ . '/../Elf/Admin/Menu.php';
         /* if (File::exists(__DIR__ . '/../Elf/UrlParams.php')) {
             require_once __DIR__ . '/../Elf/UrlParams.php';
         }
@@ -36,6 +37,7 @@ class ElfBasicProvider extends ServiceProvider
         $loader->alias('UrlParams','Elfcms\Basic\Elf\UrlParams');
         $loader->alias('FormSaver','Elfcms\Basic\Elf\FormSaver');
         $loader->alias('Helpers','Elfcms\Basic\Elf\Helpers');
+        $loader->alias('AdminMenu','Elfcms\Basic\Elf\Admin\Menu');
 
         //$router = $this->app['router'];
         //$router->pushMiddlewareToGroup('web', AdminUser::class);
@@ -55,7 +57,7 @@ class ElfBasicProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'basic');
 
         $this->publishes([
-            __DIR__.'/../config/basic.php' => config_path('basic.php'),
+            __DIR__.'/../config/basic.php' => config_path('elfcms/basic.php'),
         ]);
 
         $this->publishes([

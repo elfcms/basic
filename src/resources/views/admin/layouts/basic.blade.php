@@ -14,6 +14,7 @@
 </head>
 <body>
 @inject('currentUser', 'Elfcms\Basic\Elf\User')
+@inject('menu', 'Elfcms\Basic\Elf\Admin\Menu')
 <header id="header">
     <a href="/" class="logobox">
         <div class="logoimg">
@@ -25,109 +26,40 @@
         </div>
         <div class="logoname">@isset($site_settings['name']) {{ $site_settings['name'] }} @endisset</div>
     </a>
+
     <nav id="mainmenu">
         <ul>
-            <li @if(Str::startsWith(Route::currentRouteName(),'admin.users')) class="active" @endif>
-                <a href="{{ route('admin.users') }}">
-                    <img src="/vendor/elfcms/basic/admin/images/icons/users.png" alt="">
-                    <span>Users</span>
+            @forelse ($menu::get() as $item)
+            <li @if(Str::startsWith(Route::currentRouteName(),$item['parent_route'])) class="active" @endif>
+                <a href="{{ route($item['route']) }}">
+                    <img src="{{ $item['icon'] }}" alt="">
+                    <span>@if (empty($item['lang_title']))
+                    {{ $item['title'] }}
+                    @else
+                    {{ __($item['lang_title']) }}
+                    @endif</span>
                 </a>
+                @if (!empty($item['submenu']))
                 <ul class="submenu">
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.users') && !Str::startsWith(Route::currentRouteName(),'admin.users.roles')) class="active" @endif>
-                        <a href="{{ route('admin.users') }}">Users</a>
+                    @foreach ($item['submenu'] as $subitem)
+                    <li @if(Str::startsWith(Route::currentRouteName(),$subitem['route']) && (empty($item['submenu'][$loop->iteration]) || !Str::startsWith(Route::currentRouteName(),$item['submenu'][$loop->iteration]['route']))) class="active" @endif>
+                        <a href="{{ route($subitem['route']) }}">
+                            @if (empty($subitem['lang_title']))
+                            {{ $subitem['title'] }}
+                            @else
+                            {{ __($subitem['lang_title']) }}
+                            @endif
+                        </a>
                     </li>
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.users.roles')) class="active" @endif>
-                        <a href="{{ route('admin.users.roles') }}">Roles</a>
-                    </li>
+                    @endforeach
                 </ul>
+                @endif
+
             </li>
-            <li @if(Route::is('admin.settings.index')) class="active" @endif>
-                <a href="{{ route('admin.settings.index') }}">
-                    <img src="/vendor/elfcms/basic/admin/images/icons/settings.png" alt="">
-                    <span>Settings</span>
-                </a>
-            </li>
-            <li @if(Str::startsWith(Route::currentRouteName(),'admin.email')) class="active" @endif>
-                <a href="{{ route('admin.email') }}">
-                    <img src="/vendor/elfcms/basic/admin/images/icons/email.png" alt="">
-                    <span>Email</span>
-                </a>
-                <ul class="submenu">
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.email.addresses')) class="active" @endif>
-                        <a href="{{ route('admin.email.addresses') }}">Addresses</a>
-                    </li>
-                </ul>
-                <ul class="submenu">
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.email.events')) class="active" @endif>
-                        <a href="{{ route('admin.email.events') }}">Events</a>
-                    </li>
-                </ul>
-            </li>
-            <li @if(Str::startsWith(Route::currentRouteName(),'admin.form')) class="active" @endif>
-                <a href="{{ route('admin.form') }}">
-                    <img src="/vendor/elfcms/basic/admin/images/icons/forms.png" alt="">
-                    <span>{{ __('basic::elf.form') }}</span>
-                </a>
-                <ul class="submenu">
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.form.forms')) class="active" @endif>
-                        <a href="{{ route('admin.form.forms') }}">{{ __('basic::elf.forms') }}</a>
-                    </li>
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.form.groups')) class="active" @endif>
-                        <a href="{{ route('admin.form.groups') }}">{{ __('basic::elf.field_groups') }}</a>
-                    </li>
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.form.fields')) class="active" @endif>
-                        <a href="{{ route('admin.form.fields') }}">{{ __('basic::elf.fields') }}</a>
-                    </li>
-                </ul>
-            </li>
-            {{-- <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog')) class="active" @endif>
-                <a href="{{ route('admin.blog') }}">
-                    <img src="/vendor/elfcms/basic/admin/images/icons/blog.png" alt="">
-                    <span>Blog</span>
-                </a>
-                <ul class="submenu">
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog.categories')) class="active" @endif>
-                        <a href="{{ route('admin.blog.categories') }}">Categories</a>
-                    </li>
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog.posts')) class="active" @endif>
-                        <a href="{{ route('admin.blog.posts') }}">Posts</a>
-                    </li>
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog.tags')) class="active" @endif>
-                        <a href="{{ route('admin.blog.tags') }}">Tags</a>
-                    </li>
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog.comments')) class="active" @endif>
-                        <a href="{{ route('admin.blog.comments') }}">Comments</a>
-                    </li>
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog.votes')) class="active" @endif>
-                        <a href="{{ route('admin.blog.votes') }}">Votes</a>
-                    </li>
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.blog.likes')) class="active" @endif>
-                        <a href="{{ route('admin.blog.likes') }}">Likes</a>
-                    </li>
-                </ul>
-            </li> --}}
-            <li @if(Str::startsWith(Route::currentRouteName(),'admin.menu')) class="active" @endif>
-                <a href="{{ route('admin.menu.menus') }}">
-                    <img src="/vendor/elfcms/basic/admin/images/icons/menu.png" alt="">
-                    <span>Menu</span>
-                </a>
-                <ul class="submenu">
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.menu.menus')) class="active" @endif>
-                        <a href="{{ route('admin.menu.menus') }}">Menus</a>
-                    </li>
-                </ul>
-                <ul class="submenu">
-                    <li @if(Str::startsWith(Route::currentRouteName(),'admin.menu.items')) class="active" @endif>
-                        <a href="{{ route('admin.menu.items') }}">Items</a>
-                    </li>
-                </ul>
-            </li>
-            <li @if(Str::startsWith(Route::currentRouteName(),'admin.page.pages')) class="active" @endif>
-                <a href="{{ route('admin.page.pages') }}">
-                    <img src="/vendor/elfcms/basic/admin/images/icons/pages.png" alt="">
-                    <span>Pages</span>
-                </a>
-            </li>
+            @empty
+
+            @endforelse
+
             <li class="only-mobile">
                 <a href="/admin/logout">
                     <img src="/vendor/elfcms/basic/admin/images/icons/logout.png" alt="">

@@ -14,6 +14,8 @@ class AdminController extends \App\Http\Controllers\Controller
     public function index()
     {
         //dd(Route::getRoutes());
+        //dd(config('basic.elf_menu'));
+        //dd(config('elfcms'));
         return view('basic::admin.index',[
             'page' => [
                 'title' => 'Administration Panel',
